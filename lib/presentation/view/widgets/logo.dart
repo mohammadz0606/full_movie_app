@@ -12,6 +12,10 @@ class LogoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
+
+
+
+
       "assets/pngs/logo.png",
       color: Colors.white,
       height: height.h,
