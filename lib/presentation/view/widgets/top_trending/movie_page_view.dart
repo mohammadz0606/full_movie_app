@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../data/models/movie_model.dart';
 import '../../../view_model/get_data.dart';
+import '../../screens/details.dart';
 import 'animated_movie_card.dart';
 
 class MoviePageView extends StatefulWidget {
@@ -50,30 +51,41 @@ class _MoviePageViewState extends State<MoviePageView> {
       ),
       child: Consumer<GetDataAPIProvider>(
         builder: (context, provider, child) {
-          return PageView.builder(
-            physics: const ClampingScrollPhysics(),
-            pageSnapping: true,
-            controller: pageController,
-            itemCount: widget.movies.length,
-            onPageChanged: (value) {
-              log("my value in page view $value");
-              log(widget.movies[value].backdropPath!);
-              provider.setBackgroundImageTrending(
-                image: widget.movies[value].backdropPath!,
-              );
-              provider.setTitleTrendingMovie(
-                title: widget.movies[value].title!,
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const DetailsMovieScreen();
+                  },
+                ),
               );
             },
-            itemBuilder: (context, index) {
-              final movieData = widget.movies[index];
-              return AnimatedMovieCard(
-                index: index,
-                movieId: movieData.id!,
-                pageController: pageController,
-                posterPath: movieData.posterPath!,
-              );
-            },
+            child: PageView.builder(
+              physics: const ClampingScrollPhysics(),
+              pageSnapping: true,
+              controller: pageController,
+              itemCount: widget.movies.length,
+              onPageChanged: (value) {
+                log("my value in page view $value");
+                log(widget.movies[value].backdropPath!);
+                provider.setBackgroundImageTrending(
+                  image: widget.movies[value].backdropPath!,
+                );
+                provider.setTitleTrendingMovie(
+                  title: widget.movies[value].title!,
+                );
+              },
+              itemBuilder: (context, index) {
+                final movieData = widget.movies[index];
+                return AnimatedMovieCard(
+                  index: index,
+                  movieId: movieData.id!,
+                  pageController: pageController,
+                  posterPath: movieData.posterPath!,
+                );
+              },
+            ),
           );
         },
       ),
