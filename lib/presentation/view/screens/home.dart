@@ -6,6 +6,7 @@ import '../widgets/drawer/navigation_drawer.dart';
 import '../widgets/loading.dart';
 import '../widgets/tabs/movie_tab.dart';
 import '../widgets/top_trending/movie_carousel.dart';
+import 'details.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -24,9 +25,20 @@ class HomeScreen extends StatelessWidget {
                 FractionallySizedBox(
                   alignment: Alignment.topCenter,
                   heightFactor: 0.58,
-                  child: MovieCarouselWidget(
-                    defaultIndex: 0,
-                    movies: provider.trendingMovie,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const DetailsMovieScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: MovieCarouselWidget(
+                      defaultIndex: 0,
+                      movies: provider.trendingMovie,
+                    ),
                   ),
                 ),
                 Visibility(
