@@ -10,6 +10,7 @@ import 'helper/languages/language_list.dart';
 import 'helper/themes/app_colors.dart';
 import 'helper/themes/theme_text.dart';
 import 'presentation/view/screens/home.dart';
+import 'presentation/view/screens/home_test.dart';
 import 'presentation/view/widgets/wiredash.dart';
 import 'presentation/view_model/get_data.dart';
 import 'presentation/view_model/language.dart';
@@ -69,7 +70,8 @@ class MyApp extends StatelessWidget {
                 langCode: Locale(languages[langProvider.indexLang].code).languageCode,
                 child: MaterialApp(
                   debugShowCheckedModeBanner: false,
-                  home: const HomeScreen(),
+                  //home: const HomeScreen(),
+                  home: const MoviePage(),
                   supportedLocales: languages
                       .map(
                         (e) => Locale(e.code),

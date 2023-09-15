@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../data/api/get_data.dart';
@@ -5,6 +7,7 @@ import '../../data/models/movie_details_model.dart';
 import '../../data/models/movie_model.dart';
 import '../../data/models/tab.dart';
 import '../../helper/languages/translation_constants.dart';
+import '../../result.dart';
 
 class GetDataAPIProvider extends ChangeNotifier {
   final GetDataAPI _getDataAPI = GetDataAPI();
@@ -39,6 +42,34 @@ class GetDataAPIProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  ///Result class lets you handle the result of any async operation in a better way
+  Result<List<MovieModel>, Exception> result = Result<List<MovieModel>, Exception>();
+  Future<void> getPopularMovies() async{
+    var x = result.compute(() async => await _getDataAPI.getPopular());
+    notifyListeners();
+    result = await x;
+    notifyListeners();
+ /*  await result.compute(() async => await _getDataAPI.getPopular());
+     if(result.isOk){
+     popularMovie = result.ok!;
+     notifyListeners();
+     log(popularMovie.length.toString());
+    }else if(result.isLoading){
+      log("loading");
+    }else if(result.isError){
+      log("error");
+    }*/
+    if (result.isOk) {
+      log("ok");
+      popularMovie = result.ok!;
+      notifyListeners();
+      log(popularMovie.length.toString());
+    } else if (result.isLoading) {
+      log("loading");
+    } else if (result.isError) {
+      log("error");
+    }
+  }
   void getPopular() async {
     isLoadPopularMovie = true;
     notifyListeners();
