@@ -49,26 +49,6 @@ class GetDataAPIProvider extends ChangeNotifier {
     notifyListeners();
     result = await x;
     notifyListeners();
- /*  await result.compute(() async => await _getDataAPI.getPopular());
-     if(result.isOk){
-     popularMovie = result.ok!;
-     notifyListeners();
-     log(popularMovie.length.toString());
-    }else if(result.isLoading){
-      log("loading");
-    }else if(result.isError){
-      log("error");
-    }*/
-    if (result.isOk) {
-      log("ok");
-      popularMovie = result.ok!;
-      notifyListeners();
-      log(popularMovie.length.toString());
-    } else if (result.isLoading) {
-      log("loading");
-    } else if (result.isError) {
-      log("error");
-    }
   }
   void getPopular() async {
     isLoadPopularMovie = true;

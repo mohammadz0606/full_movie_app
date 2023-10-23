@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wiredash/wiredash.dart';
 
 import '../../../helper/themes/app_colors.dart';
 
@@ -15,7 +14,7 @@ class WiredashApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wiredash(
+   /* return Wiredash(
       projectId: "movies-app-aaeyumy",
       secret: "yedEcYnQhsImNa7EKxMDRUGayXO6xO6n",
       options: WiredashOptionsData(
@@ -30,6 +29,7 @@ class WiredashApp extends StatelessWidget {
         secondaryBackgroundColor: AppColor.vulcan,
       ),
       child: child,
-    );
+    );*/
+    return Container();
   }
 }

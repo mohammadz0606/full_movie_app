@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:wiredash/wiredash.dart';
 
 import '../../../../helper/languages/app_localization.dart';
 import '../../../../helper/languages/language_list.dart';
@@ -57,7 +56,7 @@ class CustomNavigationDrawer extends StatelessWidget {
                   .translate(TranslationConstants.feedback)!,
               onTap: () {
                 Navigator.of(context).pop();
-                Wiredash.of(context).show(inheritMaterialTheme: true);
+                //Wiredash.of(context).show(inheritMaterialTheme: true);
               },
             ),
             NavigationListItem(

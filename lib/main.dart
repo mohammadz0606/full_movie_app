@@ -66,35 +66,32 @@ class MyApp extends StatelessWidget {
         builder: (context, child) {
           return Consumer<LanguageProvider>(
             builder: (context, langProvider, child) {
-              return WiredashApp(
-                langCode: Locale(languages[langProvider.indexLang].code).languageCode,
-                child: MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  //home: const HomeScreen(),
-                  home: const MoviePage(),
-                  supportedLocales: languages
-                      .map(
-                        (e) => Locale(e.code),
-                  )
-                      .toList(),
-                  locale: Locale(languages[langProvider.indexLang].code),
-                  localizationsDelegates: const [
-                    AppLocalization.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  theme: ThemeData.dark().copyWith(
-                    useMaterial3: true,
-                    unselectedWidgetColor: AppColor.royalBlue,
-                    primaryColor: AppColor.vulcan,
-                    scaffoldBackgroundColor: AppColor.vulcan,
-                    visualDensity: VisualDensity.adaptivePlatformDensity,
-                    textTheme: ThemeText.getTextTheme(),
-                    appBarTheme: AppBarTheme(
-                      elevation: 0,
-                      systemOverlayStyle: _setSystemUIOverlayStyle(),
-                    ),
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                //home: const HomeScreen(),
+                home: const MoviePage(),
+                supportedLocales: languages
+                    .map(
+                      (e) => Locale(e.code),
+                )
+                    .toList(),
+                locale: Locale(languages[langProvider.indexLang].code),
+                localizationsDelegates: const [
+                  AppLocalization.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                theme: ThemeData.dark().copyWith(
+                  useMaterial3: true,
+                  unselectedWidgetColor: AppColor.royalBlue,
+                  primaryColor: AppColor.vulcan,
+                  scaffoldBackgroundColor: AppColor.vulcan,
+                  visualDensity: VisualDensity.adaptivePlatformDensity,
+                  textTheme: ThemeText.getTextTheme(),
+                  appBarTheme: AppBarTheme(
+                    elevation: 0,
+                    systemOverlayStyle: _setSystemUIOverlayStyle(),
                   ),
                 ),
               );
