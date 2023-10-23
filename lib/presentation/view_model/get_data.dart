@@ -55,6 +55,7 @@ class GetDataAPIProvider extends ChangeNotifier {
     notifyListeners();
     popularMovie = await _getDataAPI.getPopular();
     isLoadPopularMovie = false;
+
     notifyListeners();
   }
 
