@@ -25,6 +25,7 @@ class MovieCardWidget extends StatelessWidget {
         focusColor: Colors.transparent,
         splashColor: Colors.transparent,
         child: FadeInImage(
+
           placeholder: const AssetImage("assets/pngs/tmdb_logo.png"),
           fit: BoxFit.cover,
           placeholderFit: BoxFit.cover,
